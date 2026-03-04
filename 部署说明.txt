@@ -1,0 +1,43 @@
+========================================
+双人减脂小程序 - 原型部署说明
+========================================
+
+方法：直接在Vercel网页上传（2分钟搞定）
+
+步骤：
+
+1. 访问 https://vercel.com/tombigcats-projects
+
+2. 点击 "Add New..." 按钮 → 选择 "Project"
+
+3. 在弹出的页面里，选择 "Import Git Repository" 下方的 
+   "Or import from a different Git provider"
+   或者找到 "Upload" 按钮
+
+4. 把 prototype 文件夹压缩成 zip 文件上传
+   （文件在：/Users/tom/.openclaw/workspace/projects/减肥挑战/prototype.zip）
+
+5. 点击 "Deploy" 按钮
+
+6. 等待30秒，部署完成！
+
+========================================
+文件位置
+========================================
+
+原型文件：/Users/tom/.openclaw/workspace/projects/减肥挑战/prototype/
+├── index.html    (主文件)
+└── vercel.json   (配置文件)
+
+压缩包：/Users/tom/.openclaw/workspace/projects/减肥挑战/prototype.zip
+
+========================================
+部署后访问地址
+========================================
+
+部署成功后会得到类似：
+https://double-slim-xxxxx.vercel.app
+
+可以在Vercel项目设置里绑定到已有域名：
+fruitree-prototype-vsbv.vercel.app
+========================================

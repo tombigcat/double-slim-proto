@@ -6,117 +6,48 @@
     <title>双人减脂 - 你胖我赢！</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px;
-        }
-        .phone-frame {
-            width: 375px;
-            height: 812px;
-            background: white;
-            border-radius: 40px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-            overflow: hidden;
-            position: relative;
-        }
-        .screen {
-            width: 100%;
-            height: 100%;
-            overflow-y: auto;
-            background: #f5f5f5;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 20px; }
+        .phone-frame { width: 375px; height: 812px; background: white; border-radius: 40px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); overflow: hidden; position: relative; }
+        .screen { width: 100%; height: 100%; overflow-y: auto; background: #f5f5f5; }
         .page { display: none; min-height: 100%; padding-bottom: 80px; }
         .page.active { display: block; }
-        
-        /* 首页 */
-        .home-header {
-            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%);
-            padding: 40px 20px 30px;
-            text-align: center;
-            color: white;
-        }
+        .home-header { background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%); padding: 40px 20px 30px; text-align: center; color: white; }
         .home-header h1 { font-size: 28px; margin-bottom: 8px; }
-        .btn-primary {
-            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%);
-            color: white;
-            border: none;
-            padding: 16px 40px;
-            border-radius: 25px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            display: block;
-            margin: 20px auto;
-        }
+        .btn-primary { background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%); color: white; border: none; padding: 16px 40px; border-radius: 25px; font-size: 18px; font-weight: bold; cursor: pointer; display: block; margin: 20px auto; }
         .btn-large { padding: 20px 60px; font-size: 20px; border-radius: 30px; }
         .section-title { padding: 20px; font-size: 16px; font-weight: bold; }
-        .challenge-card {
-            background: white;
-            margin: 0 15px 15px;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            cursor: pointer;
-        }
+        .challenge-card { background: white; margin: 0 15px 15px; border-radius: 16px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); cursor: pointer; }
         .vs-section { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
-        .avatar {
-            width: 50px; height: 50px; border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 20px;
-        }
+        .avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; }
         .vs-text { font-weight: bold; color: #FF6B9D; }
         .status-leading { background: #e6f7e6; color: #52c41a; padding: 6px 12px; border-radius: 12px; font-size: 13px; }
         .status-losing { background: #fff2e8; color: #fa8c16; padding: 6px 12px; border-radius: 12px; font-size: 13px; }
-        
-        /* 发起挑战 */
         .page-header { background: white; padding: 15px 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #eee; }
         .back-btn { font-size: 20px; cursor: pointer; }
         .form-section { background: white; margin: 15px; border-radius: 16px; padding: 20px; }
         .form-label { font-size: 15px; font-weight: bold; margin-bottom: 15px; display: block; }
         .option-group { display: flex; gap: 10px; flex-wrap: wrap; }
-        .option-btn { padding: 12px 24px; border: 2px solid #eee; background: white; border-radius: 20px; cursor: pointer; }
+        .option-btn { padding: 12px 20px; border: 2px solid #eee; background: white; border-radius: 20px; cursor: pointer; font-size: 14px; }
         .option-btn.selected { border-color: #FF6B9D; background: #fff0f3; color: #FF6B9D; }
-        .input-field { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 12px; font-size: 16px; text-align: center; }
+        .input-field { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 12px; font-size: 16px; }
+        .input-row { display: flex; gap: 15px; }
         .quick-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
         .tag { padding: 8px 16px; background: #f5f5f5; border-radius: 15px; font-size: 13px; cursor: pointer; }
-        
-        /* 详情页 */
-        .detail-header {
-            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%);
-            padding: 60px 20px 30px;
-            color: white;
-            text-align: center;
-        }
+        .detail-header { background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%); padding: 60px 20px 30px; color: white; text-align: center; }
         .detail-vs { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 20px; }
         .player { text-align: center; }
         .player-avatar { width: 70px; height: 70px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 10px; }
         .vs-badge { background: rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; font-weight: bold; }
         .leading-banner { background: rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 25px; display: inline-block; font-weight: bold; }
-        
-        /* 进度条 */
         .progress-section { background: white; margin: 15px; border-radius: 16px; padding: 20px; }
-        .progress-item { margin-bottom: 15px; }
+        .progress-item { margin-bottom: 20px; }
         .progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
         .progress-bar { height: 12px; background: #f0f0f0; border-radius: 6px; overflow: hidden; }
         .progress-fill { height: 100%; border-radius: 6px; }
         .progress-fill-pink { background: linear-gradient(90deg, #FF6B9D, #FF8E53); }
         .progress-fill-blue { background: linear-gradient(90deg, #4A90E2, #5BA3F5); }
-        
-        /* 打卡 */
+        .progress-detail { font-size: 12px; color: #999; margin-top: 5px; }
         .checkin-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
-        .checkin-icon { width: 40px; height: 40px; background: #f5f5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 15px; }
-        .checkin-info { flex: 1; }
-        .checkin-title { font-weight: bold; margin-bottom: 4px; }
-        .checkin-desc { font-size: 13px; color: #999; }
-        .checkin-add { color: #FF6B9D; font-size: 14px; }
-        
-        /* 结果页 */
         .result-header { background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%); padding: 40px 20px; text-align: center; color: white; }
         .winner-trophy { font-size: 60px; margin-bottom: 15px; }
         .winner-text { font-size: 24px; font-weight: bold; margin-bottom: 30px; }
@@ -124,268 +55,127 @@
         .result-avatar { width: 80px; height: 80px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 10px; }
         .result-avatar.winner { box-shadow: 0 0 0 4px #ffd700; }
         .btn-secondary { background: white; color: #FF6B9D; border: 2px solid #FF6B9D; padding: 14px 30px; border-radius: 25px; font-size: 16px; cursor: pointer; margin: 10px; }
-        
-        /* 个人页 */
         .profile-header { background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%); padding: 40px 20px; color: white; text-align: center; }
         .profile-avatar { width: 90px; height: 90px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; font-size: 48px; margin: 0 auto 15px; }
         .stat-number { font-size: 28px; font-weight: bold; color: #FF6B9D; }
         .menu-item { display: flex; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid #f0f0f0; cursor: pointer; background: white; margin: 0 15px; }
         .stats-row { display: flex; justify-content: space-around; padding: 20px; background: white; margin: 15px; border-radius: 16px; }
+        .exercise-item { background: #f8f8f8; padding: 15px; border-radius: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .add-exercise-btn { border: 2px dashed #ddd; padding: 15px; border-radius: 12px; text-align: center; color: #999; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="phone-frame">
         <div class="screen">
-            
-            <!-- 首页 -->
             <div class="page active" id="page-home">
-                <div class="home-header">
-                    <h1>双人减脂</h1>
-                    <p>你胖我赢！</p>
-                </div>
+                <div class="home-header"><h1>双人减脂</h1><p>你胖我赢！</p></div>
                 <button class="btn-primary btn-large" onclick="showPage('page-create')">发起挑战</button>
                 <div class="section-title">进行中的挑战</div>
                 <div class="challenge-card" onclick="showPage('page-detail')">
-                    <div class="vs-section">
-                        <div class="avatar">🐱</div>
-                        <span class="vs-text">VS</span>
-                        <div class="avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">👧</div>
-                    </div>
+                    <div class="vs-section"><div class="avatar">🐱</div><span class="vs-text">VS</span><div class="avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">👧</div></div>
                     <div style="color:#666;font-size:14px;margin-bottom:10px;">第 7 天 / 共 30 天</div>
-                    <span class="status-leading">🔥 你领先 1.2kg</span>
+                    <span class="status-leading">🔥 目标完成领先 20%</span>
+                    <div style="font-size:12px;color:#999;margin-top:5px;">你 -1.8kg(60%) vs 小美 -0.8kg(40%)</div>
                 </div>
-                <div class="challenge-card">
-                    <div class="vs-section">
-                        <div class="avatar">🐱</div>
-                        <span class="vs-text">VS</span>
-                        <div class="avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">👦</div>
-                    </div>
-                    <div style="color:#666;font-size:14px;margin-bottom:10px;">第 3 天 / 共 14 天</div>
-                    <span class="status-losing">⚠️ 落后 0.5kg</span>
-                </div>
-                <div class="section-title">历史挑战 <span style="color:#999;font-weight:normal;">查看全部 ></span></div>
-                
-                <!-- 底部导航 -->
-                <div style="position:fixed;bottom:0;left:0;right:0;height:70px;background:white;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;padding-bottom:10px;width:375px;margin:0 auto;border-radius:0 0 40px 40px;">
-                    <div style="text-align:center;color:#FF6B9D;" onclick="showPage('page-home')">
-                        <div style="font-size:24px;">🏠</div>
-                        <div style="font-size:11px;">首页</div>
-                    </div>
-                    <div style="width:50px;height:50px;background:linear-gradient(135deg,#FF6B9D,#FF8E53);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;margin-top:-20px;" onclick="showPage('page-create')">+</div>
-                    <div style="text-align:center;color:#999;" onclick="showPage('page-profile')">
-                        <div style="font-size:24px;">👤</div>
-                        <div style="font-size:11px;">我的</div>
-                    </div>
+                <div class="challenge-card" onclick="showPage('page-result')">
+                    <div class="vs-section"><div class="avatar">🐱</div><span class="vs-text">VS</span><div class="avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">👦</div></div>
+                    <div style="color:#666;font-size:14px;margin-bottom:10px;">已结束 - 点击查看结果</div>
+                    <span class="status-leading">🏆 你获胜！查看结果</span>
                 </div>
             </div>
             
-            <!-- 发起挑战页 -->
             <div class="page" id="page-create">
-                <div class="page-header">
-                    <span class="back-btn" onclick="showPage('page-home')">←</span>
-                    <span style="font-size:18px;font-weight:bold;">发起挑战</span>
-                </div>
+                <div class="page-header"><span class="back-btn" onclick="showPage('page-home')">←</span><span style="font-size:18px;font-weight:bold;">发起挑战</span></div>
                 <div class="form-section">
                     <label class="form-label">选择挑战对象</label>
-                    <div class="option-group">
-                        <div class="option-btn selected" onclick="selectOption(this)">💕 情侣</div>
-                        <div class="option-btn" onclick="selectOption(this)">👯 闺蜜</div>
-                        <div class="option-btn" onclick="selectOption(this)">👥 朋友</div>
-                    </div>
+                    <div class="option-group"><div class="option-btn selected" onclick="selectOption(this)">💕 情侣</div><div class="option-btn" onclick="selectOption(this)">👯 闺蜜</div><div class="option-btn" onclick="selectOption(this)">👥 朋友</div></div>
                 </div>
                 <div class="form-section">
                     <label class="form-label">挑战时长</label>
-                    <div class="option-group">
-                        <div class="option-btn" onclick="selectOption(this)">7天</div>
-                        <div class="option-btn selected" onclick="selectOption(this)">14天</div>
-                        <div class="option-btn" onclick="selectOption(this)">30天</div>
-                    </div>
+                    <div class="option-group"><div class="option-btn" onclick="selectOption(this)">7天</div><div class="option-btn" onclick="selectOption(this)">14天</div><div class="option-btn selected" onclick="selectOption(this)">30天</div><div class="option-btn" onclick="selectOption(this)">60天</div><div class="option-btn" onclick="selectOption(this)">90天</div><div class="option-btn" onclick="selectOption(this)">自定义</div></div>
                 </div>
                 <div class="form-section">
-                    <label class="form-label">减重目标</label>
-                    <input type="text" class="input-field" placeholder="3" style="width:150px;display:inline-block;">
-                    <span style="margin-left:10px;color:#666;">kg</span>
+                    <label class="form-label">减重目标（双方分别设定）</label>
+                    <div class="input-row"><input type="text" class="input-field" placeholder="我的目标 3kg" style="flex:1;text-align:center;"><input type="text" class="input-field" placeholder="对方目标 2kg" style="flex:1;text-align:center;"></div>
                 </div>
                 <div class="form-section">
                     <label class="form-label">奖惩措施（可选）</label>
                     <input type="text" class="input-field" placeholder="输的一方请喝奶茶">
-                    <div class="quick-tags">
-                        <span class="tag">请吃饭</span>
-                        <span class="tag">发红包</span>
-                        <span class="tag">包家务</span>
-                        <span class="tag">清空购物车</span>
-                    </div>
+                    <div class="quick-tags"><span class="tag">🍽️ 请吃饭</span><span class="tag">🧧 发红包</span><span class="tag">🧹 包家务</span><span class="tag">🛒 清空购物车</span><span class="tag">📱 发朋友圈</span><span class="tag">💌 手写情书</span><span class="tag">👜 买包包</span><span class="tag">🎬 陪看剧</span></div>
                 </div>
-                <button class="btn-primary" onclick="alert('调起微信分享，邀请好友')">邀请好友</button>
+                <button class="btn-primary" onclick="alert('调起微信分享')">邀请好友</button>
             </div>
             
-            <!-- 挑战详情页 -->
             <div class="page" id="page-detail">
                 <div style="position:absolute;top:15px;left:20px;z-index:10;color:white;font-size:20px;cursor:pointer;" onclick="showPage('page-home')">←</div>
                 <div class="detail-header">
-                    <div class="detail-vs">
-                        <div class="player">
-                            <div class="player-avatar">🐱</div>
-                            <div style="font-weight:bold;">大猫</div>
-                            <div style="font-size:14px;opacity:0.9;">68.5kg</div>
-                        </div>
-                        <div class="vs-badge">VS</div>
-                        <div class="player">
-                            <div class="player-avatar">👧</div>
-                            <div style="font-weight:bold;">小美</div>
-                            <div style="font-size:14px;opacity:0.9;">52.0kg</div>
-                        </div>
-                    </div>
-                    <div class="leading-banner">🔥 你领先 1.2kg，继续保持！</div>
+                    <div class="detail-vs"><div class="player"><div class="player-avatar">🐱</div><div style="font-weight:bold;">大猫</div><div style="font-size:14px;opacity:0.9;">目标3kg</div></div><div class="vs-badge">VS</div><div class="player"><div class="player-avatar">👧</div><div style="font-weight:bold;">小美</div><div style="font-size:14px;opacity:0.9;">目标2kg</div></div></div>
+                    <div class="leading-banner">🔥 目标完成度领先 20%</div>
                 </div>
                 <div class="progress-section">
-                    <div class="progress-item">
-                        <div class="progress-label"><span>大猫</span><span>52%</span></div>
-                        <div class="progress-bar"><div class="progress-fill progress-fill-pink" style="width:52%;"></div></div>
-                    </div>
-                    <div class="progress-item">
-                        <div class="progress-label"><span>小美</span><span>38%</span></div>
-                        <div class="progress-bar"><div class="progress-fill progress-fill-blue" style="width:38%;"></div></div>
-                    </div>
-                </div>
-                <div class="form-section">
-                    <label class="form-label">体重变化曲线</label>
-                    <div style="height:150px;background:#f8f8f8;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#999;border:2px dashed #eee;">
-                        📊 体重变化双曲线图<br><small>粉线=你，蓝线=对方</small>
-                    </div>
+                    <div class="progress-item"><div class="progress-label"><span>🐱 大猫</span><span>60%</span></div><div class="progress-bar"><div class="progress-fill progress-fill-pink" style="width:60%;"></div></div><div class="progress-detail">已减 1.8kg / 目标 3kg</div></div>
+                    <div class="progress-item"><div class="progress-label"><span>👧 小美</span><span>40%</span></div><div class="progress-bar"><div class="progress-fill progress-fill-blue" style="width:40%;"></div></div><div class="progress-detail">已减 0.8kg / 目标 2kg</div></div>
                 </div>
                 <div class="form-section" onclick="showPage('page-checkin')">
-                    <div style="display:flex;align-items:center;">
-                        <div style="width:40px;height:40px;background:linear-gradient(135deg,#FF6B9D,#FF8E53);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-right:15px;color:white;">📝</div>
-                        <div style="flex:1;">
-                            <div style="font-weight:bold;">今日打卡</div>
-                            <div style="font-size:13px;color:#999;">记录体重、饮食、运动</div>
-                        </div>
-                        <span style="color:#FF6B9D;">去打卡 ></span>
-                    </div>
+                    <div style="display:flex;align-items:center;"><div style="width:40px;height:40px;background:linear-gradient(135deg,#FF6B9D,#FF8E53);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-right:15px;color:white;">📝</div><div style="flex:1;"><div style="font-weight:bold;">今日打卡</div><div style="font-size:13px;color:#999;">记录体重、饮食、运动</div></div><span style="color:#FF6B9D;">去打卡 ></span></div>
                 </div>
                 <div class="progress-section">
-                    <label class="form-label">打卡记录</label>
-                    <div class="checkin-item"><span>Day7</span><span style="margin-left:20px;">大猫 68.0kg ⬇️</span><span style="margin-left:auto;color:#999;">小美 52.0kg ➡️</span></div>
-                    <div class="checkin-item"><span>Day6</span><span style="margin-left:20px;">大猫 68.5kg ⬇️</span><span style="margin-left:auto;color:#999;">小美 52.2kg ⬇️</span></div>
+                    <label class="form-label">打卡记录（点击查看详情）</label>
+                    <div class="checkin-item"><span>Day7</span><span style="margin-left:20px;">大猫 -1.8kg(60%)</span><span style="margin-left:auto;color:#999;">></span></div>
+                    <div class="checkin-item"><span>Day6</span><span style="margin-left:20px;">大猫 -1.5kg(50%)</span><span style="margin-left:auto;color:#999;">></span></div>
                 </div>
             </div>
             
-            <!-- 打卡页 -->
             <div class="page" id="page-checkin">
-                <div class="page-header">
-                    <span class="back-btn" onclick="showPage('page-detail')">←</span>
-                    <span style="font-size:18px;font-weight:bold;">每日打卡</span>
-                </div>
+                <div class="page-header"><span class="back-btn" onclick="showPage('page-detail')">←</span><span style="font-size:18px;font-weight:bold;">每日打卡</span></div>
                 <div style="text-align:center;padding:20px;color:#666;">📅 第 7 天 / 共 30 天</div>
                 <div class="form-section">
                     <label class="form-label">今日体重 *</label>
-                    <input type="text" class="input-field" placeholder="68.0" style="font-size:32px;font-weight:bold;">
+                    <input type="text" class="input-field" placeholder="66.2" style="font-size:32px;font-weight:bold;">
                     <div style="text-align:center;margin-top:10px;color:#FF6B9D;font-size:14px;">📷 拍照识别体重秤</div>
                 </div>
                 <div class="form-section">
-                    <label class="form-label">今日饮食（可选）</label>
-                    <div class="checkin-item"><div class="checkin-icon">🌅</div><div class="checkin-info"><div class="checkin-title">早餐</div></div><span class="checkin-add">+ 添加</span></div>
-                    <div class="checkin-item"><div class="checkin-icon">🌞</div><div class="checkin-info"><div class="checkin-title">午餐</div></div><span class="checkin-add">+ 添加</span></div>
-                    <div class="checkin-item" style="border:none;"><div class="checkin-icon">🌙</div><div class="checkin-info"><div class="checkin-title">晚餐</div></div><span class="checkin-add">+ 添加</span></div>
+                    <label class="form-label">今日饮食（可选，可拍照或文字）</label>
+                    <div style="border:2px dashed #ddd;border-radius:12px;padding:30px;text-align:center;color:#999;margin-bottom:15px;"><div style="font-size:32px;margin-bottom:10px;">📷</div><div>点击拍照或上传图片</div></div>
+                    <input type="text" class="input-field" placeholder="简单描述吃了什么（可选）">
                 </div>
                 <div class="form-section">
-                    <label class="form-label">今日运动（可选）</label>
-                    <div class="quick-tags">
-                        <span class="tag">🏃 跑步</span><span class="tag">🚶 快走</span><span class="tag">🏊 游泳</span><span class="tag">🚴 骑行</span>
-                    </div>
+                    <label class="form-label">今日运动（可选，可添加多项）</label>
+                    <div class="exercise-item"><div><div style="font-weight:bold;">🏃 跑步</div><div style="font-size:13px;color:#999;">30 分钟</div></div><span style="color:#ff4d4f;cursor:pointer;" onclick="this.parentElement.remove()">删除</span></div>
+                    <div class="add-exercise-btn" onclick="alert('添加运动：选择类型+时长')">+ 添加运动记录</div>
+                    <div style="text-align:center;margin-top:15px;padding:15px;background:#fff0f3;border-radius:12px;"><div style="font-size:13px;color:#666;">今日总运动时长</div><div style="font-size:24px;font-weight:bold;color:#FF6B9D;">30 分钟 🔥</div></div>
                 </div>
                 <button class="btn-primary" onclick="showPage('page-detail')">提交打卡</button>
             </div>
             
-            <!-- 结果页 -->
             <div class="page" id="page-result">
                 <div class="result-header">
                     <div class="winner-trophy">🏆</div>
                     <div class="winner-text">恭喜大猫获胜！</div>
                     <div class="result-players">
-                        <div style="text-align:center;">
-                            <div class="result-avatar winner">🐱</div>
-                            <div>大猫</div>
-                            <div style="font-weight:bold;color:#ffd700;">-3.0kg</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div class="result-avatar">👧</div>
-                            <div>小美</div>
-                            <div style="font-weight:bold;">-1.5kg</div>
-                        </div>
+                        <div style="text-align:center;"><div class="result-avatar winner">🐱</div><div style="font-weight:bold;">大猫</div><div style="font-size:14px;opacity:0.9;">目标完成 100%</div><div style="font-size:18px;font-weight:bold;color:#ffd700;margin-top:5px;">-3.0kg</div></div>
+                        <div style="text-align:center;"><div class="result-avatar">👧</div><div style="font-weight:bold;">小美</div><div style="font-size:14px;opacity:0.9;">目标完成 75%</div><div style="font-size:18px;font-weight:bold;margin-top:5px;">-1.5kg</div></div>
                     </div>
                 </div>
-                <div class="form-section" style="text-align:center;">
-                    <div style="font-size:48px;margin-bottom:10px;">🏅</div>
-                    <div style="font-weight:bold;">减脂王者徽章</div>
-                    <div style="color:#999;font-size:14px;">首次获胜</div>
-                </div>
-                <div class="form-section">
-                    <label class="form-label">惩罚执行</label>
-                    <div style="background:#fff0f3;padding:20px;border-radius:12px;text-align:center;">
-                        <div style="margin-bottom:10px;">小美请大猫喝奶茶</div>
-                        <button style="background:#FF6B9D;color:white;border:none;padding:8px 16px;border-radius:15px;">标记已完成</button>
-                    </div>
-                </div>
-                <div style="text-align:center;padding:20px;">
-                    <button class="btn-secondary">📤 分享战果</button>
-                </div>
-                <div style="display:flex;justify-content:center;gap:15px;padding:0 20px 40px;">
-                    <button class="btn-primary" style="flex:1;margin:0;">再来一局</button>
-                    <button class="btn-secondary" style="flex:1;margin:0;" onclick="showPage('page-home')">返回首页</button>
-                </div>
+                <div class="form-section" style="text-align:center;"><div style="font-size:48px;margin-bottom:10px;">🏅</div><div style="font-weight:bold;">减脂王者徽章</div><div style="color:#999;font-size:14px;">首次挑战获胜</div></div>
+                <div class="form-section"><label class="form-label">奖惩执行</label><div style="background:#fff0f3;padding:20px;border-radius:12px;text-align:center;"><div style="margin-bottom:10px;">💌 手写一封情书</div><button style="background:#FF6B9D;color:white;border:none;padding:8px 16px;border-radius:15px;">标记已完成</button></div></div>
+                <div style="text-align:center;padding:20px;"><button class="btn-secondary">📤 生成分享海报</button></div>
+                <div style="display:flex;justify-content:center;gap:15px;padding:0 20px 40px;"><button class="btn-primary" style="flex:1;margin:0;">再来一局</button><button class="btn-secondary" style="flex:1;margin:0;" onclick="showPage('page-home')">返回首页</button></div>
             </div>
             
-            <!-- 个人页 -->
             <div class="page" id="page-profile">
-                <div class="profile-header">
-                    <div class="profile-avatar">🐱</div>
-                    <div style="font-size:22px;font-weight:bold;">大猫</div>
-                    <div style="font-size:14px;opacity:0.9;margin-top:8px;">已坚持 30 天</div>
-                </div>
-                <div class="stats-row">
-                    <div style="text-align:center;"><div class="stat-number">5</div><div style="font-size:13px;color:#999;margin-top:5px;">总挑战</div></div>
-                    <div style="text-align:center;"><div class="stat-number">3</div><div style="font-size:13px;color:#999;margin-top:5px;">获胜</div></div>
-                    <div style="text-align:center;"><div class="stat-number">60%</div><div style="font-size:13px;color:#999;margin-top:5px;">胜率</div></div>
-                </div>
-                <div class="form-section">
-                    <label class="form-label">我的成就</label>
-                    <div style="display:flex;gap:15px;flex-wrap:wrap;">
-                        <div style="width:70px;text-align:center;"><div style="width:60px;height:60px;background:linear-gradient(135deg,#ffd700,#ffed4e);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 8px;">🏅</div><div style="font-size:12px;color:#666;">首胜</div></div>
-                        <div style="width:70px;text-align:center;"><div style="width:60px;height:60px;background:linear-gradient(135deg,#c0c0c0,#e8e8e8);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 8px;">🥈</div><div style="font-size:12px;color:#666;">3连胜</div></div>
-                        <div style="width:70px;text-align:center;"><div style="width:60px;height:60px;background:linear-gradient(135deg,#cd7f32,#daa520);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 8px;">🔥</div><div style="font-size:12px;">10天</div></div>
-                    </div>
-                </div>
-                <div class="menu-item"><span>提醒设置</span><span style="color:#ccc;">></span></div>
-                <div class="menu-item"><span>隐私设置</span><span style="color:#ccc;">></span></div>
-                <div class="menu-item"><span>关于我们</span><span style="color:#ccc;">></span></div>
-                
-                <div style="position:fixed;bottom:0;left:0;right:0;height:70px;background:white;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;padding-bottom:10px;width:375px;margin:0 auto;border-radius:0 0 40px 40px;">
-                    <div style="text-align:center;color:#999;" onclick="showPage('page-home')">
-                        <div style="font-size:24px;">🏠</div>
-                        <div style="font-size:11px;">首页</div>
-                    </div>
-                    <div style="width:50px;height:50px;background:linear-gradient(135deg,#FF6B9D,#FF8E53);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;margin-top:-20px;" onclick="showPage('page-create')">+</div>
-                    <div style="text-align:center;color:#FF6B9D;" onclick="showPage('page-profile')">
-                        <div style="font-size:24px;">👤</div>
-                        <div style="font-size:11px;">我的</div>
-                    </div>
-                </div>
+                <div class="profile-header"><div class="profile-avatar">🐱</div><div style="font-size:22px;font-weight:bold;">大猫</div><div style="font-size:14px;opacity:0.9;margin-top:8px;">已坚持减脂 30 天</div></div>
+                <div class="stats-row"><div style="text-align:center;"><div class="stat-number">5</div><div style="font-size:13px;color:#999;margin-top:5px;">总挑战</div></div><div style="text-align:center;"><div class="stat-number">3</div><div style="font-size:13px;color:#999;margin-top:5px;">获胜</div></div><div style="text-align:center;"><div class="stat-number">60%</div><div style="font-size:13px;color:#999;margin-top:5px;">胜率</div></div></div>
+                <div class="form-section"><label class="form-label">我的成就</label><div style="display:flex;gap:15px;"><div style="width:70px;text-align:center;"><div style="width:60px;height:60px;background:linear-gradient(135deg,#ffd700,#ffed4e);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 8px;">🏅</div><div style="font-size:12px;color:#666;">首胜</div></div><div style="width:70px;text-align:center;"><div style="width:60px;height:60px;background:linear-gradient(135deg,#c0c0c0,#e8e8e8);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 8px;">🥈</div><div style="font-size:12px;color:#666;">3连胜</div></div></div></div>
+                <div class="menu-item"><span>✏️ 编辑个人信息</span><span style="color:#ccc;">></span></div>
+                <div class="menu-item"><span>📊 历史战绩</span><span style="color:#ccc;">></span></div>
+                <div class="menu-item"><span>⏰ 提醒设置</span><span style="color:#ccc;">></span></div>
             </div>
-            
         </div>
     </div>
-    
     <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-        }
-        function selectOption(el) {
-            el.parentElement.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
-            el.classList.add('selected');
-        }
+        function showPage(pageId) { document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(pageId).classList.add('active'); }
+        function selectOption(el) { el.parentElement.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected')); el.classList.add('selected'); }
     </script>
 </body>
 </html>
